@@ -34,10 +34,6 @@ C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.dll
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.pdb
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.csproj.CopyComplete
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\bundleconfig.json
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Database\Database.cshtml.g.cs
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Deployment.cshtml.g.cs
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Project.cshtml.g.cs
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Userz.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\DnsClient.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
@@ -120,3 +116,7 @@ C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysi
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Database\show_all_database.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Database\Show_Database.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Show_deployment.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Show_project.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Show_userz.cshtml.g.cs

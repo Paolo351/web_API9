@@ -84,6 +84,11 @@ namespace web_API9
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                /*endpoints.MapControllerRoute(
+                    name: "Show_all_database",
+                    pattern: "{controller=Database}/{action=Show_all_database}");*/
+
             });
         }
     }

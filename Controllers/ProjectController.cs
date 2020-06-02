@@ -9,11 +9,12 @@ using web_API9.Models;
 
 namespace web_API9.Controllers
 {
-    
+    [Route("Project")]
+    [ApiController]
     public class ProjectController : Controller
     {
-
-        public IActionResult Project()
+        [Route("Show_project")]
+        public IActionResult Show_project()
         {
 
             return View();

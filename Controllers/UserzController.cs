@@ -9,11 +9,13 @@ using web_API9.Models;
 
 namespace web_API9.Controllers
 {
-    
+    [Route("Userz")]
+    [ApiController]
     public class UserzController : Controller
     {
 
-        public IActionResult Userz()
+        [Route("Show_userz")]
+        public IActionResult Show_userz()
         {
 
             return View();

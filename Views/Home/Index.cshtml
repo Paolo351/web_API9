@@ -4,11 +4,13 @@
 
     <div class="text-left">
         <h1 class="display-4">Hello, </h1>
+        <form method="post">
+            <a class="nav-link text-light" asp-area="" asp-controller="Deployment" asp-action="Show_deployment">Deployment</a>
+            <a class="nav-link text-light" asp-area="" asp-controller="Userz" asp-action="Show_userz">User</a>
+            <a class="nav-link text-light" asp-area="" asp-controller="Project" asp-action="Show_project">Project</a>
+            <a class="nav-link text-light" asp-area="" asp-controller="Database" asp-action="Show_database">Database</a>
+            
+        </form>
 
-        <a class="nav-link text-light" asp-area="" asp-controller="Deployment" asp-action="Deployment">Deployment</a>
-
-        <a class="nav-link text-light" asp-area="" asp-controller="Userz" asp-action="Userz">User</a>
-        <a class="nav-link text-light" asp-area="" asp-controller="Project" asp-action="Project">Project</a>
-        <a class="nav-link text-light" asp-area="" asp-controller="Database" asp-action="Database">Database</a>
 
     </div>

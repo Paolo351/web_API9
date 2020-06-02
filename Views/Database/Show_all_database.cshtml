@@ -1,5 +1,4 @@
-﻿
-@model web_API9.Models.ViewModels.Show_all_databaseViewModel
+﻿@model web_API9.Models.ViewModels.Show_all_databaseViewModel
 @{
     ViewData["Title"] = "Show_all_database";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,12 +11,12 @@
     <ul>
         @foreach (var Database in Model.Databases)
         {
-            <li>@Database.DatabaseId, Database name: @Database.Name, Engine: @Database.Engine</li>
+            <li>@Database._id, Database name: @Database.Name, Engine: @Database.Engine</li>
 
 
         }
     </ul>
     <form>
-        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+        <a class="nav-link text-light" asp-area="" asp-controller="Database" asp-action="Show_database">Back</a>
     </form>
 </div>

@@ -12,9 +12,8 @@ using web_API9.Services;
 namespace web_API9.Controllers
 {
 
-    //[Route("Database")]
-    //[Route("api")]
-    //[ApiController]
+    [Route("Database")]
+    [ApiController]
     public class DatabaseController : Controller
     {
         private readonly DatabaseService _DatabaseService;
@@ -24,7 +23,7 @@ namespace web_API9.Controllers
             _DatabaseService = DatabaseService;
         }
 
-        //[Route("Show_all_database")]
+        [Route("Show_all_database")]
         public IActionResult Show_all_database()
         {
             
@@ -38,11 +37,10 @@ namespace web_API9.Controllers
             return View(viewModel);
             
         }
-        
 
-        public IActionResult Database()
+        [Route("Show_database")]
+        public IActionResult Show_database()
         {
-
             return View();
         }
     }

@@ -9,7 +9,8 @@ using web_API9.Models;
 
 namespace web_API9.Controllers
 {
-    
+    //[Route("Home")]
+    //[ApiController]
     public class HomeController : Controller
     {
         
@@ -22,16 +23,20 @@ namespace web_API9.Controllers
             _logger = logger;
         }
 
+
+        //[Route("Index")]
         public IActionResult Index()
         {
             return View();
         }
 
+        //[Route("Privacy")]
         public IActionResult Privacy()
         {
             return View();
         }
 
+        //[Route("Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

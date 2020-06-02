@@ -9,11 +9,13 @@ using web_API9.Models;
 
 namespace web_API9.Controllers
 {
-    
+    [Route("Deployment")]
+    [ApiController]
     public class DeploymentController : Controller
     {
 
-        public IActionResult Deployment()
+        [Route("Show_deployment")]
+        public IActionResult Show_deployment()
         {
 
             return View();
