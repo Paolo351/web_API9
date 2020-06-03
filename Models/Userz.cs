@@ -8,7 +8,7 @@ namespace web_API9.Models
 {
     public class Userz
     {
-        public ObjectId UserzId { get; set; }
+        public ObjectId _id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -20,11 +20,7 @@ namespace web_API9.Models
 
         public string Email { get; set; }
 
-        public enum Role
-        {
-            Admin = 0,
-            Schema_guard = 1,
-            Spectator = 2
-        }
-    }
+        public string Role { get; set; }
+        
+}
 }

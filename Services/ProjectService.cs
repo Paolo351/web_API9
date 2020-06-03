@@ -12,17 +12,19 @@ namespace web_API9.Services
     {
         private readonly IMongoCollection<Project> _Projects;
 
+
         public ProjectService(IBDO_DatabaseSettings settings)
         {
-            var client = new MongoClient(MongoDB_BDO.ConnectionString_BDO);
-            var database = client.GetDatabase(MongoDB_BDO.bd_BDO);
-            var collec = database.GetCollection<BsonDocument>(MongoDB_BDO.kolekcja_Project);
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
 
-            _Projects = database.GetCollection<Project>(settings.CollectionName);
+            _Projects = database.GetCollection<Project>(settings.CollectionName_pro);
         }
 
+        public List<Project> Get() =>
+            _Projects.Find(project => true).ToList();
 
-        
+
 
     }
 }

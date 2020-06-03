@@ -1,0 +1,22 @@
+﻿@model web_API9.Models.ViewModels.Show_all_userzViewModel
+@{
+    ViewData["Title"] = "Show_all_userz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="text-left">
+    <h1 class="display-4">Users: </h1>
+    <ul>
+        @foreach (var Userz in Model.Userzs)
+        {
+        <li>@Userz._id, Full name: @Userz.FullName, Password: @Userz.PasswordHash, Email: @Userz.Email, Role: @Userz.Role</li>
+
+
+        }
+    </ul>
+    <form>
+        <a class="nav-link text-light" asp-area="" asp-controller="Userz" asp-action="Show_userz">Back</a>
+    </form>
+</div>

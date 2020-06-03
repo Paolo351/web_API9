@@ -18,13 +18,29 @@ namespace web_API9.Services
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _Databases = database.GetCollection<Database>(settings.CollectionName);
+            _Databases = database.GetCollection<Database>(settings.CollectionName_db);
         }
 
         public List<Database> Get() =>
             _Databases.Find(database => true).ToList();
 
         
+        public Database Get(string id) =>
+           _Databases.Find<Database>(database => database.DatabaseId == id).FirstOrDefault();
 
+        public Database Create(Database database)
+        {
+            _Databases.InsertOne(database);
+            return database;
+        }
+
+        public void Update(string id, Database databaseIn) =>
+            _Databases.ReplaceOne(student => student.DatabaseId == id, databaseIn);
+
+        public void Remove(Database databaseIn) =>
+            _Databases.DeleteOne(database => database.DatabaseId == databaseIn.DatabaseId);
+
+        public void Remove(string id) =>
+            _Databases.DeleteOne(database => database.DatabaseId == id);
     }
 }

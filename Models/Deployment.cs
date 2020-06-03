@@ -23,7 +23,7 @@ namespace web_API9.Models
 
         }
 
-        public ObjectId DeploymentId { get; set; }
+        public ObjectId _id { get; set; }
 
         public string Name { get; set; }
 

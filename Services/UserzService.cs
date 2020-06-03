@@ -14,15 +14,15 @@ namespace web_API9.Services
 
         public UserzService(IBDO_DatabaseSettings settings)
         {
-            var client = new MongoClient(MongoDB_BDO.ConnectionString_BDO);
-            var database = client.GetDatabase(MongoDB_BDO.bd_BDO);
-            var collec = database.GetCollection<BsonDocument>(MongoDB_BDO.kolekcja_Userz);
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
 
-            _Userzs = database.GetCollection<Userz>(settings.CollectionName);
+            _Userzs = database.GetCollection<Userz>(settings.CollectionName_user);
         }
 
 
-        
+        public List<Userz> Get() =>
+            _Userzs.Find(userz => true).ToList();
 
     }
 }

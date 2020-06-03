@@ -1,0 +1,22 @@
+﻿@model web_API9.Models.ViewModels.Show_all_projectViewModel
+@{
+    ViewData["Title"] = "Show_all_project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="text-left">
+    <h1 class="display-4">Projects: </h1>
+    <ul>
+        @foreach (var Project in Model.Projects)
+        {
+            <li>@Project._id, Project name: @Project.Name</li>
+
+
+        }
+    </ul>
+    <form>
+        <a class="nav-link text-light" asp-area="" asp-controller="Project" asp-action="Show_project">Back</a>
+    </form>
+</div>

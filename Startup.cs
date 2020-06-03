@@ -27,33 +27,15 @@ namespace web_API9
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            //Userz
-            services.Configure<Userz_DatabaseSettings>(
-                Configuration.GetSection(nameof(Userz_DatabaseSettings)));
+            
+            services.Configure<DatabaseSettings>(
+                Configuration.GetSection(nameof(DatabaseSettings)));
             services.AddSingleton<IBDO_DatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<Userz_DatabaseSettings>>().Value);
-            services.AddSingleton<UserzService>();
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
-            //Deployment
-            services.Configure<Deployment_DatabaseSettings>(
-                Configuration.GetSection(nameof(Deployment_DatabaseSettings)));
-            services.AddSingleton<IBDO_DatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<Deployment_DatabaseSettings>>().Value);
             services.AddSingleton<DeploymentService>();
-
-            //Project
-            services.Configure<Project_DatabaseSettings>(
-                Configuration.GetSection(nameof(Project_DatabaseSettings)));
-            services.AddSingleton<IBDO_DatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<Project_DatabaseSettings>>().Value);
+            services.AddSingleton<UserzService>();
             services.AddSingleton<ProjectService>();
-
-            //Database
-            services.Configure<Database_DatabaseSettings>(
-                Configuration.GetSection(nameof(Database_DatabaseSettings)));
-            services.AddSingleton<IBDO_DatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<Database_DatabaseSettings>>().Value);
             services.AddSingleton<DatabaseService>();
 
         }

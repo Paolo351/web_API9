@@ -8,7 +8,7 @@ namespace web_API9.Models
 {
     public class Project
     {
-        public ObjectId ProjectId { get; set; }
+        public ObjectId _id { get; set; }
 
         public string Name { get; set; }
 

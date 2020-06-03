@@ -1,15 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Show_Database";
+    ViewData["Title"] = "Show_database";
 }
 
     <div class="text-left">
         <h1 class="display-4">Database</h1>
-        <form method="post">
+        <form>
             <button asp-controller="Database" asp-action="Show_all_database">Show all databases</button><br><br>
-            <button asp-controller="Database" asp-action="Add_database">Add a database</button><input type="text" name="name_wpis"><input type="text" name="engine_wpis"><br><br>
-            <button asp-controller="Database" asp-action="Del_database">Delete a database</button><input type="text" name="numer_wpis"><br><br>
+        
+        
+            <button asp-controller="Database" asp-action="Add_database">Add a database</button>
+
+            <input type="text" name="name_wpis" value="name">
+            <input type="text" name="engine_wpis" value="engine"><br><br>
+        
+        
+            <button asp-controller="Database" asp-action="Del_database">Delete a database</button><input type="text" name="numer" value="id"><br><br>
+        </form>
 
 
             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
-        </form>
+
     </div>
