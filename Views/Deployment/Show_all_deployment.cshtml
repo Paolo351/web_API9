@@ -7,12 +7,12 @@
 
 
 
-<div class="text-left">
+<div class="text-left" >
     <h1 class="display-4">Deployments: </h1>
     <ul>
         @foreach (var Deployment in Model.Deployment_RS)
         {
-        <li>@Deployment.DeploymentId, Name: @Deployment.Name, Time: @Deployment.TimeOfDeployment, Schema content: @Deployment.SchemaContent, Project: @Deployment.Nazwa_project, User: @Deployment.Nazwa_user</li>
+        <li>@Deployment.DeploymentId, Name: @Deployment.Name, Time: @Deployment.TimeOfDeployment.ToShortDateString(), Schema content: @Deployment.SchemaContent, Project: @Deployment.Nazwa_project, User: @Deployment.Nazwa_user</li>
 
 
         }
