@@ -20,8 +20,10 @@ namespace web_API9.Services
             _Deployments = database.GetCollection<Deployment>(settings.CollectionName_depl);
         }
 
+        public List<Deployment> Get() =>
+            _Deployments.Find(deployment => true).ToList();
 
-        
-
+        public Deployment Get(string id) =>
+           _Deployments.Find<Deployment>(deployment => deployment.DeploymentId == id).FirstOrDefault();
     }
 }

@@ -25,6 +25,17 @@ namespace web_API9.Services
             _Projects.Find(project => true).ToList();
 
 
+        public Project Create(Project project)
+        {
+            _Projects.InsertOne(project);
+            return project;
+        }
+
+        public Project Get(string id) =>
+           _Projects.Find<Project>(project => project.ProjectId == id).FirstOrDefault();
+
+        public void Remove(string id) =>
+            _Projects.DeleteOne(project => project.ProjectId == id);
 
     }
 }

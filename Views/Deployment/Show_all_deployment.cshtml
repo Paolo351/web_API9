@@ -1,0 +1,23 @@
+﻿@model web_API9.Models.ViewModels.Show_all_deploymentViewModel
+
+@{
+    ViewData["Title"] = "Show_all_deployment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="text-left">
+    <h1 class="display-4">Deployments: </h1>
+    <ul>
+        @foreach (var Deployment in Model.Deployment_RS)
+        {
+        <li>@Deployment.DeploymentId, Name: @Deployment.Name, Time: @Deployment.TimeOfDeployment, Schema content: @Deployment.SchemaContent, Project: @Deployment.Nazwa_project, User: @Deployment.Nazwa_user</li>
+
+
+        }
+    </ul>
+    <form>
+        <a class="nav-link text-light" asp-area="" asp-controller="Deployment" asp-action="Show_deployment">Back</a>
+    </form>
+</div>

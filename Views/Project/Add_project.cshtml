@@ -1,17 +1,17 @@
 ﻿@model web_API9.Models.ViewModels.Show_all_projectViewModel
 @{
-    ViewData["Title"] = "Show_all_project";
+    ViewData["Title"] = "Add_project";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
 <div class="text-left">
-    <h1 class="display-4">Projects: </h1>
+    <h1 class="display-4">Project added: </h1>
     <ul>
         @foreach (var Project in Model.Projects)
         {
-            <li>@Project.ProjectId, Project name: @Project.Name</li>
+        <li>@Project.ProjectId, Project name: @Project.Name</li>
 
 
         }

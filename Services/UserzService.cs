@@ -24,5 +24,18 @@ namespace web_API9.Services
         public List<Userz> Get() =>
             _Userzs.Find(userz => true).ToList();
 
+
+        public Userz Create(Userz userz)
+        {
+            _Userzs.InsertOne(userz);
+            return userz;
+        }
+
+        public Userz Get(string id) =>
+           _Userzs.Find<Userz>(userz => userz.UserzId == id).FirstOrDefault();
+
+        public void Remove(string id) =>
+            _Userzs.DeleteOne(userz => userz.UserzId == id);
+
     }
 }

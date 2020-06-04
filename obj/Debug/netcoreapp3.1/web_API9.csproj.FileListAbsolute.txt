@@ -124,3 +124,8 @@ C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Show
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Show_all_userz.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Database\Del_database.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Database\Add_database.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Add_project.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Del_project.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Add_userz.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Del_userz.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Show_all_deployment.cshtml.g.cs

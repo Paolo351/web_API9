@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,20 @@ namespace web_API9.Models
 {
     public class Project
     {
-        public ObjectId _id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ProjectId { get; set; }
 
         public string Name { get; set; }
 
-        
+        public Project(string Name_wej)
+        {
+            this.ProjectId = "";
+
+            this.Name = Name_wej;
+            
+
+        }
+
     }
 }

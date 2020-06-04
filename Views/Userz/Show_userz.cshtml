@@ -8,14 +8,13 @@
         <form>
             <button asp-controller="Userz" asp-action="Show_all_userz">Show all users</button><br><br>
             <button asp-controller="Userz" asp-action="Add_userz">Add a user</button>
-            <input type="text" firstname="firstname_wpis">
-            <input type="text" lastname="lastname_wpis">
-            <input type="text" fullname="fullname_wpis">
-            <input type="text" password="password_wpis">
-            <input type="text" email="email_wpis">
-            <input type="text" rola="rola_wpis">
+            <input type="text" name="firstname_wpis" value="first name">
+            <input type="text" name="lastname_wpis" value="last name">
+            <input type="text" name="password_wpis" value="password">
+            <input type="text" name="email_wpis" value="email">
+            <input type="text" name="rola_wpis" value="role">
             <br><br>
-            <button asp-controller="Userz" asp-action="Del_userz">Delete a user</button><input type="text" name="numer_wpis"><br><br>
+            <button asp-controller="Userz" asp-action="Del_userz">Delete a user</button><input type="text" name="numer_wpis" value="id"><br><br>
 
 
             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
