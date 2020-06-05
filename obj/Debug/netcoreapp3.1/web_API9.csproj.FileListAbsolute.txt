@@ -129,3 +129,5 @@ C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Project\Del_
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Add_userz.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Userz\Del_userz.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Show_all_deployment.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Add_deployment.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\Del_deployment.cshtml.g.cs

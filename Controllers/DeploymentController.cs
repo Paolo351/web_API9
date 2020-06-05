@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using web_API9.Models;
 using web_API9.Services;
 using web_API9.Models.ViewModels;
-using web_API9.Controllers;
 
 namespace web_API9.Controllers
 {
@@ -31,8 +30,52 @@ namespace web_API9.Controllers
 
         }
 
-        
-        
+        [Route("Add_deployment")]
+        public IActionResult Add_deployment
+            (string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis, 
+            string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
+        {
+            var document = new Deployment(name_wpis, deployMode_wpis, plannedTimeOfDeployment_wpis, timeOfDeployment_wpis, details_wpis, hasBeenDeployed_wpis,
+            attachedFeatureDescription_wpis, schemaContent_wpis, targetDbId_wpis, schemaCreatedByUserId_wpis, attachedToProjectId_wpis);
+
+            var deployment_list = new List<Deployment>();
+            deployment_list.Add(_DeploymentService.Create(document));
+
+            var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
+            var deployment_list_R = new List<Deployment_R>();
+            deployment_list_R.Add(document_R);
+
+            var viewModel = new Show_all_deploymentViewModel()
+            {
+                Deployment_RS = deployment_list_R
+            };
+            return View(viewModel);
+        }
+
+
+        [Route("Del_deployment")]
+        public IActionResult Del_deployment(string numer)
+        {
+            var document = _DeploymentService.Get(numer);
+            if (document == null)
+                return NotFound();
+
+            var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
+
+            _DeploymentService.Remove(document.DeploymentId);
+
+            var deployment_list = new List<Deployment_R>();
+
+            deployment_list.Add(document_R);
+
+            var viewModel = new Show_all_deploymentViewModel()
+            {
+                Deployment_RS = deployment_list
+            };
+
+            return View(viewModel);
+        }
+
 
         [Route("Show_deployment")]
         public IActionResult Show_deployment()
@@ -48,48 +91,19 @@ namespace web_API9.Controllers
             var deployment_list = new List<Deployment>(_DeploymentService.Get());
             var deployment_list_R = new List<Deployment_R>();
 
-            string user_string, project_string, db_string;
-            var document_R = new Deployment_R();
-            //var _project = new Project();
-            Project _project;
-            Database _db;
-            Userz _user;
+            //string user_string, project_string, db_string;
+            //var document_R = new Deployment_R();
+            
+            //Project _project;
+            //Database _db;
+            //Userz _user;
 
             foreach (var document in deployment_list)
             {
-                //project = (_ProjectService.Get(document.AttachedToProjectId)).Name;
-                //fullname = (_UserzService.Get(document.SchemaCreatedByUserId)).FullName;
-                //db = (_DatabaseService.Get(document.TargetDbId)).Name;
+                var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
 
-                //_project = _ProjectService.Get("5ed757671e77180006856a7c");
-                //project_string = _project.Name;
-                //_db = _DatabaseService.Get("5ed636562f2bad0006deba6d");
-                //db_string = _db.Name;
-                //_user = _UserzService.Get("5ed77e731e77180006856a80");
-                //user_string = _user.FullName;
 
-                _project = _ProjectService.Get(document.AttachedToProjectId);
-                project_string = _project.Name;
-                _db = _DatabaseService.Get(document.TargetDbId);
-                db_string = _db.Name;
-                _user = _UserzService.Get(document.SchemaCreatedByUserId);
-                user_string = _user.FullName;
-
-                document_R.DeploymentId = document.DeploymentId;
-                document_R.Name = document.Name;
-                document_R.DeployMode = document.DeployMode;
-                document_R.PlannedTimeOfDeployment = document.PlannedTimeOfDeployment;
-                document_R.TimeOfDeployment = document.TimeOfDeployment;
-                document_R.Details = document.Details;
-                document_R.HasBeenDeployed = document.HasBeenDeployed;
-                document_R.AttachedFeatureDescription = document.AttachedFeatureDescription;
-                document_R.SchemaContent = document.SchemaContent;
-                document_R.TargetDbId = document.TargetDbId;
-                document_R.Nazwa_bd = db_string;
-                document_R.SchemaCreatedByUserId = document.SchemaCreatedByUserId;
-                document_R.Nazwa_user = user_string;
-                document_R.AttachedToProjectId = document.AttachedToProjectId;
-                document_R.Nazwa_project = project_string;
+                
 
                 deployment_list_R.Add(document_R);
             }

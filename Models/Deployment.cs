@@ -35,5 +35,22 @@ namespace web_API9.Models
         public string SchemaCreatedByUserId { get; set; }
 
         public string AttachedToProjectId { get; set; }
+
+        public Deployment(string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis,
+            string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
+        {
+            this.DeploymentId = "";
+            this.Name = name_wpis;
+            this.DeployMode = deployMode_wpis;
+            this.PlannedTimeOfDeployment = plannedTimeOfDeployment_wpis;
+            this.TimeOfDeployment = timeOfDeployment_wpis;
+            this.Details = details_wpis;
+            this.HasBeenDeployed = hasBeenDeployed_wpis;
+            this.AttachedFeatureDescription = attachedFeatureDescription_wpis;
+            this.SchemaContent = schemaContent_wpis;
+            this.TargetDbId = targetDbId_wpis;
+            this.SchemaCreatedByUserId = schemaCreatedByUserId_wpis;
+            this.AttachedToProjectId = attachedToProjectId_wpis;
+        }
     }
 }

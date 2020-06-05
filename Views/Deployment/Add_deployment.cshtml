@@ -1,18 +1,17 @@
 ﻿@model web_API9.Models.ViewModels.Show_all_deploymentViewModel
-
 @{
-    ViewData["Title"] = "Show_all_deployment";
+    ViewData["Title"] = "Add_deployment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
-<div class="text-left" >
-    <h1 class="display-4">Deployments: </h1>
+<div class="text-left">
+    <h1 class="display-4">Deployment added: </h1>
     <ul>
         @foreach (var Deployment in Model.Deployment_RS)
         {
-        <li>@Deployment.DeploymentId, Name: @Deployment.Name, Time: @Deployment.TimeOfDeployment.ToShortDateString(), Database: @Deployment.Nazwa_bd, Project: @Deployment.Nazwa_project, User: @Deployment.Nazwa_user</li>
+        <li>@Deployment.DeploymentId, Deployment name: @Deployment.Name</li>
 
 
         }

@@ -25,5 +25,16 @@ namespace web_API9.Services
 
         public Deployment Get(string id) =>
            _Deployments.Find<Deployment>(deployment => deployment.DeploymentId == id).FirstOrDefault();
+
+        public void Remove(string id) =>
+            _Deployments.DeleteOne(deployment => deployment.DeploymentId == id);
+
+        public Deployment Create(Deployment deployment)
+        {
+            _Deployments.InsertOne(deployment);
+            return deployment;
+        }
+
+       
     }
 }
