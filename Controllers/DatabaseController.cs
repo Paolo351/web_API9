@@ -34,7 +34,6 @@ namespace web_API9.Controllers
             {
                 Databases = database_list
             };
-
             return View(viewModel);
             
         }
