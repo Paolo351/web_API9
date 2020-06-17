@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "ShowProject";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Project</h1>
+
+    <form>
+        <br />
+        <table>
+            <tr>
+                <td><text>Project name </text></td>
+                <td><input type="text" name="name_wpis" value="name"></td>
+                <td><button asp-controller="Project" asp-action="AddProject">Add a project</button></td>
+            </tr>
+            <tr>
+                <td><text>Project Id </text></td>
+                <td><input type="text" name="numer" value="id"></td>
+                <td><button asp-controller="Project" asp-action="DelProject">Delete a project</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><button asp-controller="Project" asp-action="ShowAllProject">Show all projects</button></td>
+            </tr>
+        </table>
+        <br />
+        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+    </form>
+</div>

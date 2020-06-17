@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using web_API9.Models;
-using web_API9.Models.ViewModels;
-using web_API9.Services;
+using web_API9.Models.Application.Database;
+using web_API9.Models.Application.Deployment;
+using web_API9.Models.Application.Project;
+using web_API9.Models.Application.User;
+using web_API9.Infrastructure;
 
 namespace web_API9.Controllers
 {
@@ -24,13 +27,13 @@ namespace web_API9.Controllers
             _DatabaseService = DatabaseService;
         }
 
-        [Route("Show_all_database")]
-        public IActionResult Show_all_database()
+        [Route("ShowAllDatabase")]
+        public IActionResult ShowAllDatabase()
         {
             
             var database_list = new List<Database>(_DatabaseService.Get());
 
-            var viewModel = new Show_all_databaseViewModel()
+            var viewModel = new ShowAllDatabaseViewModel()
             {
                 Databases = database_list
             };
@@ -38,14 +41,14 @@ namespace web_API9.Controllers
             
         }
 
-        [Route("Add_database")]
-        public IActionResult Add_database(string name_wpis, string engine_wpis)
+        [Route("AddDatabase")]
+        public IActionResult AddDatabase(string name_wpis, string engine_wpis)
         {
             var baza = new Database(name_wpis, engine_wpis);
            
             var database_list = new List<Database>();
             database_list.Add(_DatabaseService.Create(baza));
-            var viewModel = new Show_all_databaseViewModel()
+            var viewModel = new ShowAllDatabaseViewModel()
             {
                 Databases = database_list
             };
@@ -54,8 +57,8 @@ namespace web_API9.Controllers
 
         
 
-        [Route("Del_database")]
-        public IActionResult Del_database(string numer)
+        [Route("DelDatabase")]
+        public IActionResult DelDatabase(string numer)
         {
             var database = _DatabaseService.Get(numer);
             var database_list = new List<Database>();
@@ -66,7 +69,7 @@ namespace web_API9.Controllers
             if (database == null)
                 return NotFound();
 
-            var viewModel = new Show_all_databaseViewModel()
+            var viewModel = new ShowAllDatabaseViewModel()
             {
                 Databases = database_list
             };
@@ -76,8 +79,8 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("Show_database")]
-        public IActionResult Show_database()
+        [Route("ShowDatabase")]
+        public IActionResult ShowDatabase()
         {
             return View();
         }

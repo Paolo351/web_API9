@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using web_API9.Models;
-using web_API9.Services;
+using web_API9.Infrastructure;
 
 namespace web_API9
 {
@@ -34,7 +34,7 @@ namespace web_API9
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
             services.AddSingleton<DeploymentService>();
-            services.AddSingleton<UserzService>();
+            services.AddSingleton<Userservice>();
             services.AddSingleton<ProjectService>();
             services.AddSingleton<DatabaseService>();
 
@@ -66,10 +66,6 @@ namespace web_API9
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                /*endpoints.MapControllerRoute(
-                    name: "Show_all_database",
-                    pattern: "{controller=Database}/{action=Show_all_database}");*/
 
             });
         }

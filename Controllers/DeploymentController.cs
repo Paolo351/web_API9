@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using web_API9.Models;
-using web_API9.Services;
-using web_API9.Models.ViewModels;
+using web_API9.Infrastructure;
+using web_API9.Models.Application.Database;
+using web_API9.Models.Application.Deployment;
+using web_API9.Models.Application.Project;
+using web_API9.Models.Application.User;
 
 namespace web_API9.Controllers
 {
@@ -19,19 +22,19 @@ namespace web_API9.Controllers
         private readonly ProjectService _ProjectService;
         private readonly DatabaseService _DatabaseService;
         private readonly DeploymentService _DeploymentService;
-        private readonly UserzService _UserzService;
+        private readonly Userservice _Userservice;
 
-        public DeploymentController(DeploymentService DeploymentService, ProjectService ProjectService, DatabaseService DatabaseService, UserzService UserzService)
+        public DeploymentController(DeploymentService DeploymentService, ProjectService ProjectService, DatabaseService DatabaseService, Userservice Userservice)
         {
             _DeploymentService = DeploymentService;
             _ProjectService = ProjectService;
             _DatabaseService = DatabaseService;
-            _UserzService = UserzService;
+            _Userservice = Userservice;
 
         }
 
-        [Route("Add_deployment")]
-        public IActionResult Add_deployment
+        [Route("AddDeployment")]
+        public IActionResult AddDeployment
             (string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis, 
             string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
         {
@@ -41,78 +44,73 @@ namespace web_API9.Controllers
             var deployment_list = new List<Deployment>();
             deployment_list.Add(_DeploymentService.Create(document));
 
-            var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
-            var deployment_list_R = new List<Deployment_R>();
-            deployment_list_R.Add(document_R);
+            var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
+            var document_list_toDisplay = new List<DeploymentToDisplay>();
+            document_list_toDisplay.Add(document_toDisplay);
 
-            var viewModel = new Show_all_deploymentViewModel()
+            var viewModel = new ShowAllDeploymentViewModel()
             {
-                Deployment_RS = deployment_list_R
+                DeploymentToDisplay_List = document_list_toDisplay
             };
             return View(viewModel);
         }
 
 
-        [Route("Del_deployment")]
-        public IActionResult Del_deployment(string numer)
+        [Route("DelDeployment")]
+        public IActionResult DelDeployment(string numer)
         {
             var document = _DeploymentService.Get(numer);
             if (document == null)
                 return NotFound();
 
-            var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
+            var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
 
             _DeploymentService.Remove(document.DeploymentId);
 
-            var deployment_list = new List<Deployment_R>();
+            var deployment_list = new List<DeploymentToDisplay>();
 
-            deployment_list.Add(document_R);
+            deployment_list.Add(document_toDisplay);
 
-            var viewModel = new Show_all_deploymentViewModel()
+            var viewModel = new ShowAllDeploymentViewModel()
             {
-                Deployment_RS = deployment_list
+                DeploymentToDisplay_List = deployment_list
             };
 
             return View(viewModel);
         }
 
 
-        [Route("Show_deployment")]
-        public IActionResult Show_deployment()
+        [Route("ShowDeployment")]
+        public IActionResult ShowDeployment()
         {
 
             return View();
         }
 
-        [Route("Show_all_deployment")]
-        public IActionResult Show_all_deployment()
+        [Route("ShowAllDeployment")]
+        public IActionResult ShowAllDeployment()
         {
             
             var deployment_list = new List<Deployment>(_DeploymentService.Get());
-            var deployment_list_R = new List<Deployment_R>();
+            var document_list_toDisplay = new List<DeploymentToDisplay>();
 
-            //string user_string, project_string, db_string;
-            //var document_R = new Deployment_R();
             
-            //Project _project;
-            //Database _db;
-            //Userz _user;
 
             foreach (var document in deployment_list)
             {
-                var document_R = new Deployment_R(document, _ProjectService, _DatabaseService, _UserzService);
+                var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
 
 
                 
 
-                deployment_list_R.Add(document_R);
+                document_list_toDisplay.Add(document_toDisplay);
             }
 
 
 
-            var viewModel = new Show_all_deploymentViewModel()
+            var viewModel = new ShowAllDeploymentViewModel()
             {
-                Deployment_RS = deployment_list_R
+                DeploymentToDisplay_List = document_list_toDisplay
             };
 
             return View(viewModel);

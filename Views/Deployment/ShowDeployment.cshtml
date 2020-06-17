@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "ShowDeployment";
+}
+
+    <div class="text-left">
+        <h1 class="display-4">Deployment</h1>
+        <form>
+            <br>     
+            <table>
+                <tr>
+                    <td><text>Name </text></td>
+                    <td><input type="text" name="name_wpis" value="name"></td>
+                </tr>
+                <tr>
+                    <td><text>Deploy mode </text></td>
+                    <td><input type="text" name="deployMode_wpis" value="deploy mode"></td>
+                </tr>
+                <tr>
+                    <td><text>Planned time of deployment </text></td>
+                    <td><input type="datetime" name="plannedTimeOfDeployment_wpis" value="2020-06-01"></td>
+                </tr>
+                <tr>
+                    <td><text>Time of deployment </text></td>
+                    <td><input type="datetime" name="timeOfDeployment_wpis" value="2020-06-02"></td>
+                </tr>
+                <tr>
+                    <td><text>Details </text></td>
+                    <td><input type="text" name="details_wpis" value="details"></td>
+                </tr>
+                <tr>
+                    <td><text>Has been deployed? (true or false) </text></td>
+                    <td><input type="text" name="hasBeenDeployed_wpis" value="true"></td>
+                </tr>
+                <tr>
+                    <td><text>Attached feature description </text></td>
+                    <td><input type="text" name="attachedFeatureDescription_wpis" value="attached feature description"></td>
+                </tr>
+                <tr>
+                    <td><text>Schema content </text></td>
+                    <td><input type="text" name="schemaContent_wpis" value="schema content"></td>
+                </tr>
+                <tr>
+                    <td><text>Database Id </text></td>
+                    <td><input type="text" name="targetDbId_wpis" value="5ed636562f2bad0006deba6d"></td>
+                </tr>
+                <tr>
+                    <td><text>User Id </text></td>
+                    <td><input type="text" name="schemaCreatedByUserId_wpis" value="5ed77e311e77180006856a7e"></td>
+                </tr>
+                <tr>
+                    <td><text>Project Id </text></td>
+                    <td><input type="text" name="attachedToProjectId_wpis" value="5ed757481e77180006856a7a"></td>
+                    <td><button asp-controller="Deployment" asp-action="AddDeployment">Add a deployment</button></td>
+                </tr>
+                <tr>
+                    <td><text>Deployment Id </text></td>
+                    <td><input type="text" name="numer" value="id"></td>
+                    <td><button asp-controller="Deployment" asp-action="DelDeployment">Delete a deployment</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><button asp-controller="Deployment" asp-action="ShowAllDeployment">Show all deployments</button></td>
+                </tr>
+            </table>
+            <br>
+        </form>
+        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+    </div>
