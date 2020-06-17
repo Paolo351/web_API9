@@ -17,7 +17,7 @@ namespace web_API9.Infrastructure
         private readonly IMongoCollection<Database> _Databases;
 
         
-        public DatabaseService(IBDO_DatabaseSettings settings)
+        public DatabaseService(IMongoBDO settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);

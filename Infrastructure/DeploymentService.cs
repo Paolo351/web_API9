@@ -16,7 +16,7 @@ namespace web_API9.Infrastructure
     {
         private readonly IMongoCollection<Deployment> _Deployments;
 
-        public DeploymentService(IBDO_DatabaseSettings settings)
+        public DeploymentService(IMongoBDO settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);

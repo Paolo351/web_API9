@@ -28,10 +28,10 @@ namespace web_API9
         {
             services.AddControllersWithViews();
             
-            services.Configure<DatabaseSettings>(
-                Configuration.GetSection(nameof(DatabaseSettings)));
-            services.AddSingleton<IBDO_DatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+            services.Configure<MongoBDOSettings>(
+                Configuration.GetSection(nameof(MongoBDOSettings)));
+            services.AddSingleton<IMongoBDO>(sp =>
+                sp.GetRequiredService<IOptions<MongoBDOSettings>>().Value);
 
             services.AddSingleton<DeploymentService>();
             services.AddSingleton<Userservice>();

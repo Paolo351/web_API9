@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace web_API9.Infrastructure
 {
-    public interface IBDO_DatabaseSettings
+    public interface IMongoBDO
     {
         string CollectionName_depl { get; set; }
         string CollectionName_pro { get; set; }
