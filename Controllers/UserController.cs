@@ -29,7 +29,8 @@ namespace web_API9.Controllers
         }
 
 
-        [Route("ShowAllUser")]
+        
+        [HttpGet("ShowAllUser")]
         public IActionResult ShowAllUser()
         {
 
@@ -44,7 +45,8 @@ namespace web_API9.Controllers
 
         }
 
-        [Route("AddUser")]
+        
+        [HttpGet("AddUser")]
         public IActionResult AddUser(string firstname_wpis, string lastname_wpis, string password_wpis, string email_wpis, string rola_wpis)
         {
             var uzer = new User(firstname_wpis, lastname_wpis, password_wpis, email_wpis, rola_wpis);
@@ -58,7 +60,8 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("DelUser")]
+        
+        [HttpGet("DelUser")]
         public IActionResult DelUser(string numer_wpis)
         {
             var User = _Userservice.Get(numer_wpis);
@@ -81,7 +84,8 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("ShowUser")]
+        
+        [HttpGet("ShowUser")]
         public IActionResult ShowUser()
         {
 

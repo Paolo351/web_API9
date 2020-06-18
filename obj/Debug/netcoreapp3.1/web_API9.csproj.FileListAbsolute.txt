@@ -40,8 +40,6 @@ C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\SharpCompress.dll
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.csproj.CoreCompileInputs.cache
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -131,3 +129,10 @@ C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\A
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\DelDeployment.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\ShowAllDeployment.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Deployment\ShowDeployment.cshtml.g.cs
+C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Pawel\Desktop\web_API9\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.csproj.CoreCompileInputs.cache
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.MvcApplicationPartsAssemblyInfo.cache

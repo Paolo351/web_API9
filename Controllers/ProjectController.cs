@@ -25,7 +25,8 @@ namespace web_API9.Controllers
             _ProjectService = ProjectService;
         }
 
-        [Route("AddProject")]
+        
+        [HttpGet("AddProject")]
         public IActionResult AddProject(string name_wpis)
         {
             var projekt = new Project(name_wpis);
@@ -39,7 +40,8 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("DelProject")]
+        
+        [HttpGet("DelProject")]
         public IActionResult DelProject(string numer)
         {
             var project = _ProjectService.Get(numer);
@@ -62,7 +64,8 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("ShowAllProject")]
+        
+        [HttpGet("ShowAllProject")]
         public IActionResult ShowAllProject()
         {
 
@@ -78,7 +81,8 @@ namespace web_API9.Controllers
         }
 
 
-        [Route("ShowProject")]
+        
+        [HttpGet("ShowProject")]
         public IActionResult ShowProject()
         {
 

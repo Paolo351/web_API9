@@ -33,7 +33,8 @@ namespace web_API9.Controllers
 
         }
 
-        [Route("AddDeployment")]
+       
+        [HttpGet("AddDeployment")]
         public IActionResult AddDeployment
             (string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis, 
             string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
@@ -56,7 +57,8 @@ namespace web_API9.Controllers
         }
 
 
-        [Route("DelDeployment")]
+       
+        [HttpGet("DelDeployment")]
         public IActionResult DelDeployment(string numer)
         {
             var document = _DeploymentService.Get(numer);
@@ -80,14 +82,17 @@ namespace web_API9.Controllers
         }
 
 
-        [Route("ShowDeployment")]
+        
+        [HttpGet("ShowDeployment")]
         public IActionResult ShowDeployment()
         {
 
             return View();
         }
 
-        [Route("ShowAllDeployment")]
+
+        
+        [HttpGet("ShowAllDeployment")]
         public IActionResult ShowAllDeployment()
         {
             

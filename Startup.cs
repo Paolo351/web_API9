@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using web_API9.Models;
 using web_API9.Infrastructure;
+using Microsoft.OpenApi.Models;
 
 namespace web_API9
 {
@@ -37,6 +38,13 @@ namespace web_API9
             services.AddSingleton<Userservice>();
             services.AddSingleton<ProjectService>();
             services.AddSingleton<DatabaseService>();
+
+            services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "web_API9", Version = "v1" });
+            });
 
         }
 
@@ -67,6 +75,12 @@ namespace web_API9
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "web_API9");
             });
         }
     }

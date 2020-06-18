@@ -27,7 +27,8 @@ namespace web_API9.Controllers
             _DatabaseService = DatabaseService;
         }
 
-        [Route("ShowAllDatabase")]
+        
+        [HttpGet("ShowAllDatabase")]
         public IActionResult ShowAllDatabase()
         {
             
@@ -41,7 +42,8 @@ namespace web_API9.Controllers
             
         }
 
-        [Route("AddDatabase")]
+        
+        [HttpGet("AddDatabase")]
         public IActionResult AddDatabase(string name_wpis, string engine_wpis)
         {
             var baza = new Database(name_wpis, engine_wpis);
@@ -57,7 +59,7 @@ namespace web_API9.Controllers
 
         
 
-        [Route("DelDatabase")]
+        [HttpGet("DelDatabase")]
         public IActionResult DelDatabase(string numer)
         {
             var database = _DatabaseService.Get(numer);
@@ -79,7 +81,9 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        [Route("ShowDatabase")]
+        
+
+        [HttpGet("ShowDatabase")]
         public IActionResult ShowDatabase()
         {
             return View();
