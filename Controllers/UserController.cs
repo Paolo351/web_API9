@@ -47,9 +47,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddUser")]
-        public IActionResult AddUser(string firstname_input, string lastname_input, string password_input, string email_input, string rola_input)
+        public IActionResult AddUser(string FirstName, string LastName, string PasswordHash, string Email, string Role)
         {
-            var uzer = new User(firstname_input, lastname_input, password_input, email_input, rola_input);
+            var uzer = new User(FirstName, LastName, PasswordHash, Email, Role);
 
             var User_list = new List<User>();
             User_list.Add(_Userservice.Create(uzer));
@@ -62,9 +62,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("DelUser")]
-        public IActionResult DelUser(string numer_input)
+        public IActionResult DelUser(string UserId)
         {
-            var User = _Userservice.Get(numer_input);
+            var User = _Userservice.Get(UserId);
             var User_list = new List<User>();
             User_list.Add(User);
 

@@ -44,9 +44,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddDatabase")]
-        public IActionResult AddDatabase(string name_input, string engine_input)
+        public IActionResult AddDatabase(string Name, string Engine)
         {
-            var baza = new Database(name_input, engine_input);
+            var baza = new Database(Name, Engine);
            
             var database_list = new List<Database>();
             database_list.Add(_DatabaseService.Create(baza));
@@ -60,9 +60,9 @@ namespace web_API9.Controllers
         
 
         [HttpGet("DelDatabase")]
-        public IActionResult DelDatabase(string numer)
+        public IActionResult DelDatabase(string DatabaseId)
         {
-            var database = _DatabaseService.Get(numer);
+            var database = _DatabaseService.Get(DatabaseId);
             var database_list = new List<Database>();
             database_list.Add(database);
 

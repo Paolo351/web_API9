@@ -1,43 +1,56 @@
-﻿@{
+﻿@model web_API9.Models.Application.Database.Database
+
+@{
     ViewData["Title"] = "ShowDatabase";
 }
 
-<div class="text-left">
-    <h1 class="display-4">Database</h1>
-    
-        <br />
-        
-        <form>
-            <table>
-                <tr>
-                    <td><text>Database name </text></td>
-                    <td><input type="text" name="name_input" value="name"></td>
-                </tr>
-                <tr>
-                    <td><text>Database engine </text></td>
-                    <td><input type="text" name="engine_input" value="engine"></td>
-                    <td><button asp-controller="Database" asp-action="AddDatabase">Add a database</button></td>
-                </tr>
-            
-        
-            
-                <tr>
-                    <td><text>Database Id </text></td>
-                    <td><input type="text" name="numer" value="id"></td>
-                    <td><button asp-controller="Database" asp-action="DelDatabase">Delete a database</button></td>
-                </tr>
-           
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td><button asp-controller="Database" asp-action="ShowAllDatabase">Show all databases</button></td>
-                </tr>
-            </table>
+    <div class="text-left">
+
+        <div class="row">
+            <div class="col-3">
+                <h1 class="display-4">Database</h1>
+            </div>
+        </div>
+
+        <form asp-controller="Database" asp-action="AddDatabase" method="get">
+            <div class="row">
+                <div class="col-3"><label asp-for="Name">Database name</label></div>
+                <div class="col-3"><input type="text" asp-for="Name" value="name"></div>
+            </div>
+            <div class="row">
+                <div class="col-3"><label asp-for="Engine">Database engine</label></div>
+                <div class="col-3"><input type="text" asp-for="Engine" value="engine"></div>
+                <div class="col-3"><button type="submit">Add a database</button></div>
+            </div>
         </form>
-            <br />
 
-            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+        <form asp-controller="Database" asp-action="DelDatabase" method="get">
+            <div class="row">
+                <div class="col-3"><label asp-for="DatabaseId">Database Id</label></div>
+                <div class="col-3"><input type="text" asp-for="DatabaseId" value="id"></div>
+                <div class="col-3"><button type="submit">Delete a database</button></div>
+            </div>
+        </form>
 
-</div>
+
+        <form asp-controller="Database" asp-action="ShowAllDatabase" method="get">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-3">
+                </div>
+                <div class="col-3">
+                    <button type="submit">Show all databases</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-3">
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Back to home page</a>
+            </div>
+        </div>
+
+    </div>
 
 

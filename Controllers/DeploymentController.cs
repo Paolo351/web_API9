@@ -36,11 +36,11 @@ namespace web_API9.Controllers
        
         [HttpGet("AddDeployment")]
         public IActionResult AddDeployment
-            (string name_input, string deployMode_input, DateTime plannedTimeOfDeployment_input, DateTime timeOfDeployment_input, string details_input, Boolean hasBeenDeployed_input, 
-            string attachedFeatureDescription_input, string schemaContent_input, string targetDbId_input, string schemaCreatedByUserId_input, string attachedToProjectId_input)
+            (string Name, string DeployMode, DateTime PlannedTimeOfDeployment, DateTime TimeOfDeployment, string Details, Boolean HasBeenDeployed, 
+            string AttachedFeatureDescription, string SchemaContent, string TargetDbId, string SchemaCreatedByUserId, string AttachedToProjectId)
         {
-            var document = new Deployment(name_input, deployMode_input, plannedTimeOfDeployment_input, timeOfDeployment_input, details_input, hasBeenDeployed_input,
-            attachedFeatureDescription_input, schemaContent_input, targetDbId_input, schemaCreatedByUserId_input, attachedToProjectId_input);
+            var document = new Deployment(Name, DeployMode, PlannedTimeOfDeployment, TimeOfDeployment, Details, HasBeenDeployed,
+            AttachedFeatureDescription, SchemaContent, TargetDbId, SchemaCreatedByUserId, AttachedToProjectId);
 
             var deployment_list = new List<Deployment>();
             deployment_list.Add(_DeploymentService.Create(document));
@@ -59,9 +59,9 @@ namespace web_API9.Controllers
 
        
         [HttpGet("DelDeployment")]
-        public IActionResult DelDeployment(string numer)
+        public IActionResult DelDeployment(string DeploymentId)
         {
-            var document = _DeploymentService.Get(numer);
+            var document = _DeploymentService.Get(DeploymentId);
             if (document == null)
                 return NotFound();
 

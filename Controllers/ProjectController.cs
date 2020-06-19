@@ -27,9 +27,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddProject")]
-        public IActionResult AddProject(string name_input)
+        public IActionResult AddProject(string Name)
         {
-            var projekt = new Project(name_input);
+            var projekt = new Project(Name);
 
             var project_list = new List<Project>();
             project_list.Add(_ProjectService.Create(projekt));
@@ -42,9 +42,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("DelProject")]
-        public IActionResult DelProject(string numer)
+        public IActionResult DelProject(string ProjectId)
         {
-            var project = _ProjectService.Get(numer);
+            var project = _ProjectService.Get(ProjectId);
             var project_list = new List<Project>();
             project_list.Add(project);
 
