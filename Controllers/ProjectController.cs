@@ -27,9 +27,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddProject")]
-        public IActionResult AddProject(string name_wpis)
+        public IActionResult AddProject(string name_input)
         {
-            var projekt = new Project(name_wpis);
+            var projekt = new Project(name_input);
 
             var project_list = new List<Project>();
             project_list.Add(_ProjectService.Create(projekt));

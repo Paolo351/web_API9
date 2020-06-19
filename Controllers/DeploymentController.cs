@@ -36,11 +36,11 @@ namespace web_API9.Controllers
        
         [HttpGet("AddDeployment")]
         public IActionResult AddDeployment
-            (string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis, 
-            string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
+            (string name_input, string deployMode_input, DateTime plannedTimeOfDeployment_input, DateTime timeOfDeployment_input, string details_input, Boolean hasBeenDeployed_input, 
+            string attachedFeatureDescription_input, string schemaContent_input, string targetDbId_input, string schemaCreatedByUserId_input, string attachedToProjectId_input)
         {
-            var document = new Deployment(name_wpis, deployMode_wpis, plannedTimeOfDeployment_wpis, timeOfDeployment_wpis, details_wpis, hasBeenDeployed_wpis,
-            attachedFeatureDescription_wpis, schemaContent_wpis, targetDbId_wpis, schemaCreatedByUserId_wpis, attachedToProjectId_wpis);
+            var document = new Deployment(name_input, deployMode_input, plannedTimeOfDeployment_input, timeOfDeployment_input, details_input, hasBeenDeployed_input,
+            attachedFeatureDescription_input, schemaContent_input, targetDbId_input, schemaCreatedByUserId_input, attachedToProjectId_input);
 
             var deployment_list = new List<Deployment>();
             deployment_list.Add(_DeploymentService.Create(document));

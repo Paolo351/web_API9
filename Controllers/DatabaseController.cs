@@ -44,9 +44,9 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddDatabase")]
-        public IActionResult AddDatabase(string name_wpis, string engine_wpis)
+        public IActionResult AddDatabase(string name_input, string engine_input)
         {
-            var baza = new Database(name_wpis, engine_wpis);
+            var baza = new Database(name_input, engine_input);
            
             var database_list = new List<Database>();
             database_list.Add(_DatabaseService.Create(baza));

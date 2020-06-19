@@ -36,21 +36,21 @@ namespace web_API9.Models.Application.Deployment
 
         public string AttachedToProjectId { get; set; }
 
-        public Deployment(string name_wpis, string deployMode_wpis, DateTime plannedTimeOfDeployment_wpis, DateTime timeOfDeployment_wpis, string details_wpis, Boolean hasBeenDeployed_wpis,
-            string attachedFeatureDescription_wpis, string schemaContent_wpis, string targetDbId_wpis, string schemaCreatedByUserId_wpis, string attachedToProjectId_wpis)
+        public Deployment(string name_input, string deployMode_input, DateTime plannedTimeOfDeployment_input, DateTime timeOfDeployment_input, string details_input, Boolean hasBeenDeployed_input,
+            string attachedFeatureDescription_input, string schemaContent_input, string targetDbId_input, string schemaCreatedByUserId_input, string attachedToProjectId_input)
         {
             this.DeploymentId = "";
-            this.Name = name_wpis;
-            this.DeployMode = deployMode_wpis;
-            this.PlannedTimeOfDeployment = plannedTimeOfDeployment_wpis;
-            this.TimeOfDeployment = timeOfDeployment_wpis;
-            this.Details = details_wpis;
-            this.HasBeenDeployed = hasBeenDeployed_wpis;
-            this.AttachedFeatureDescription = attachedFeatureDescription_wpis;
-            this.SchemaContent = schemaContent_wpis;
-            this.TargetDbId = targetDbId_wpis;
-            this.SchemaCreatedByUserId = schemaCreatedByUserId_wpis;
-            this.AttachedToProjectId = attachedToProjectId_wpis;
+            this.Name = name_input;
+            this.DeployMode = deployMode_input;
+            this.PlannedTimeOfDeployment = plannedTimeOfDeployment_input;
+            this.TimeOfDeployment = timeOfDeployment_input;
+            this.Details = details_input;
+            this.HasBeenDeployed = hasBeenDeployed_input;
+            this.AttachedFeatureDescription = attachedFeatureDescription_input;
+            this.SchemaContent = schemaContent_input;
+            this.TargetDbId = targetDbId_input;
+            this.SchemaCreatedByUserId = schemaCreatedByUserId_input;
+            this.AttachedToProjectId = attachedToProjectId_input;
         }
     }
 }
