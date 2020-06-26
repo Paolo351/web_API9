@@ -8,9 +8,6 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using web_API9.Models;
 using web_API9.Models.Application.Database;
-using web_API9.Models.Application.Deployment;
-using web_API9.Models.Application.Project;
-using web_API9.Models.Application.User;
 using web_API9.Infrastructure;
 
 namespace web_API9.Controllers

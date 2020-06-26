@@ -4,14 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using web_API9.Models;
-using web_API9.Models.Application.Database;
-using web_API9.Models.Application.Deployment;
 using web_API9.Models.Application.Project;
-using web_API9.Models.Application.User;
 using web_API9.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace web_API9.Controllers
 {
@@ -83,22 +78,7 @@ namespace web_API9.Controllers
 
         }
 
-        public SelectList ReturnAListOfProjects()
-        {
-            var project_list = new List<Project>(_ProjectService.Get());
-
-            var lista_string = new List<String>();
-
-            foreach (var document in project_list)
-            {
-
-                lista_string.Add(document.Name);
-            }
-
-            var slist = new SelectList(lista_string);
-
-            return slist; 
-        }
+        
 
         [HttpGet("ShowProject")]
         public IActionResult ShowProject()

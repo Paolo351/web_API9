@@ -88,8 +88,37 @@ namespace web_API9.Controllers
         [HttpGet("ShowDeployment")]
         public IActionResult ShowDeployment()
         {
-
-            return View();
+            var lista_projektow = new List<SelectListItem>();
+            var project_list = new List<Project>(_ProjectService.Get());
+            foreach (var document in project_list)
+            {
+                lista_projektow.Add(new SelectListItem { Selected = false, Text = document.Name, Value = document.ProjectId });                   
+            }
+            var slist_project = new SelectList(lista_projektow, "Value", "Text");
+            
+            var lista_baz = new List<SelectListItem>();
+            var db_list = new List<Database>(_DatabaseService.Get());
+            foreach (var document in db_list)
+            {
+                lista_baz.Add(new SelectListItem { Selected = false, Text = document.Name, Value = document.DatabaseId });
+            }
+            var slist_database = new SelectList(lista_baz, "Value", "Text");
+           
+            var lista_userow = new List<SelectListItem>();
+            var user_list = new List<User>(_Userservice.Get());
+            foreach (var document in user_list)
+            {
+                lista_userow.Add(new SelectListItem { Selected = false, Text = document.FullName, Value = document.UserId });
+            }
+            var slist_user = new SelectList(lista_userow, "Value", "Text");
+            
+            var viewModel = new ShowDeploymentViewModel()
+            {
+                SProjectlist = slist_project,
+                SDatabaselist = slist_database,
+                SUserlist = slist_user
+            };
+            return View(viewModel);
         }
 
 
@@ -120,8 +149,6 @@ namespace web_API9.Controllers
             return View(viewModel);
 
         }
-
-        
 
     }
 }
