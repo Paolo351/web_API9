@@ -1,10 +1,12 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using web_API9.Infrastructure;
+using web_API9.Models.Application.Project;
 
 namespace web_API9.Models.Application.Deployment
 {
@@ -43,6 +45,8 @@ namespace web_API9.Models.Application.Deployment
         public string AttachedToProjectId { get; set; }
         public string Nazwa_project { get; set; }
 
+        //public SelectList slist { get; set; }
+
         public DeploymentToDisplay(Deployment document, ProjectService ProjectService, DatabaseService DatabaseService, Userservice Userservice)
         {
             _ProjectService = ProjectService;
@@ -72,9 +76,37 @@ namespace web_API9.Models.Application.Deployment
             this.Nazwa_user = user_string;
             this.AttachedToProjectId = document.AttachedToProjectId;
             this.Nazwa_project = project_string;
+
+            //var lista_string = new List<String>();
+            //var dokument = new ProjectList(_ProjectService);
+
+            //foreach (var zmienna in dokument.lista)
+            //{
+            //    lista_string.Add(document.Name);
+            //}
+
+            //this.slist = new SelectList(lista_string);
+
         }
 
-        
+
+        public SelectList ListOfProjectNames(ProjectService ProjectService)
+        {
+            var lista_string = new List<String>();
+
+            var dokument = new ProjectList(_ProjectService);
+
+            foreach (var document in dokument.lista)
+            {
+
+                lista_string.Add(document.Name);
+            }
+
+            var slist = new SelectList(lista_string);
+
+            return slist;
+
+        }
 
     }
 }

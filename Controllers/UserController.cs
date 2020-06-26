@@ -47,7 +47,7 @@ namespace web_API9.Controllers
 
         
         [HttpGet("AddUser")]
-        public IActionResult AddUser(string FirstName, string LastName, string PasswordHash, string Email, string Role)
+        public IActionResult AddUser(string FirstName, string LastName, string PasswordHash, string Email, UserRole Role)
         {
             var uzer = new User(FirstName, LastName, PasswordHash, Email, Role);
 

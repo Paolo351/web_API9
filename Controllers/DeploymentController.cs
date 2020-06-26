@@ -11,6 +11,7 @@ using web_API9.Models.Application.Database;
 using web_API9.Models.Application.Deployment;
 using web_API9.Models.Application.Project;
 using web_API9.Models.Application.User;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace web_API9.Controllers
 {
@@ -26,6 +27,7 @@ namespace web_API9.Controllers
 
         public DeploymentController(DeploymentService DeploymentService, ProjectService ProjectService, DatabaseService DatabaseService, Userservice Userservice)
         {
+
             _DeploymentService = DeploymentService;
             _ProjectService = ProjectService;
             _DatabaseService = DatabaseService;
@@ -105,9 +107,6 @@ namespace web_API9.Controllers
             {
                 var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
 
-
-                
-
                 document_list_toDisplay.Add(document_toDisplay);
             }
 
@@ -122,8 +121,7 @@ namespace web_API9.Controllers
 
         }
 
-
-       
+        
 
     }
 }

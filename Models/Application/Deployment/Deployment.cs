@@ -1,9 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using web_API9.Models.Application.Project;
 
 namespace web_API9.Models.Application.Deployment
 {
@@ -36,6 +38,8 @@ namespace web_API9.Models.Application.Deployment
 
         public string AttachedToProjectId { get; set; }
 
+        
+
         public Deployment(string name_input, string deployMode_input, DateTime plannedTimeOfDeployment_input, DateTime timeOfDeployment_input, string details_input, Boolean hasBeenDeployed_input,
             string attachedFeatureDescription_input, string schemaContent_input, string targetDbId_input, string schemaCreatedByUserId_input, string attachedToProjectId_input)
         {
@@ -51,6 +55,9 @@ namespace web_API9.Models.Application.Deployment
             this.TargetDbId = targetDbId_input;
             this.SchemaCreatedByUserId = schemaCreatedByUserId_input;
             this.AttachedToProjectId = attachedToProjectId_input;
+            
         }
+
+        
     }
 }

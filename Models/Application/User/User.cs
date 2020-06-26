@@ -23,18 +23,18 @@ namespace web_API9.Models.Application.User
 
         public string Email { get; set; }
 
-        public string Role { get; set; }
+        public UserRole Role { get; set; }
 
-        public User(string FirstName_wej, string LastName_wej, string PasswordHash_wej, string Email_wej, string Role_wej)
+        public User(string FirstName, string LastName, string PasswordHash, string Email, UserRole Role)
         {
             this.UserId = "";
 
-            this.FirstName = FirstName_wej;
-            this.LastName = LastName_wej;
-            this.FullName = String.Concat(FirstName, " ", LastName_wej);
-            this.PasswordHash = PasswordHash_wej;
-            this.Email = Email_wej;
-            this.Role = Role_wej;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.FullName = String.Concat(FirstName, " ", LastName);
+            this.PasswordHash = PasswordHash;
+            this.Email = Email;
+            this.Role = Role;
 
 
         }
