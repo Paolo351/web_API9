@@ -44,16 +44,20 @@ namespace web_API9.Controllers
             AttachedFeatureDescription, SchemaContent, TargetDbId, SchemaCreatedByUserId, AttachedToProjectId);
 
             var deployment_list = new List<Deployment>();
+
             deployment_list.Add(_DeploymentService.Create(document));
 
             var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
+
             var document_list_toDisplay = new List<DeploymentToDisplay>();
+
             document_list_toDisplay.Add(document_toDisplay);
 
             var viewModel = new ShowAllDeploymentViewModel()
             {
                 DeploymentToDisplay_List = document_list_toDisplay
             };
+
             return View(viewModel);
         }
 
@@ -136,9 +140,9 @@ namespace web_API9.Controllers
         {
             
             var deployment_list = new List<Deployment>(_DeploymentService.Get());
-            var document_list_toDisplay = new List<DeploymentToDisplay>();
 
-            
+            var document_list_toDisplay = new List<DeploymentToDisplay>();
+                        
 
             foreach (var document in deployment_list)
             {

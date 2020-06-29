@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
-using web_API9.Models;
 using web_API9.Models.Application.Database;
 using web_API9.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using web_API9.Models.Application.Deployment;
 
 namespace web_API9.Controllers
 {
@@ -19,10 +13,16 @@ namespace web_API9.Controllers
     public class DatabaseController : Controller
     {
         private readonly DatabaseService _DatabaseService;
+        private readonly DeploymentService _DeploymentService;
+        private readonly  ProjectService _ProjectService;
+        private readonly Userservice _Userservice;
 
-        public DatabaseController(DatabaseService DatabaseService)
+        public DatabaseController(DatabaseService DatabaseService, DeploymentService DeploymentService, ProjectService ProjectService, Userservice Userservice)
         {
             _DatabaseService = DatabaseService;
+            _DeploymentService = DeploymentService;
+            _ProjectService = ProjectService;
+            _Userservice = Userservice;
         }
 
         
@@ -60,21 +60,74 @@ namespace web_API9.Controllers
         [HttpGet("DelDatabase")]
         public IActionResult DelDatabase(string DatabaseId)
         {
-            var database = _DatabaseService.Get(DatabaseId);
-            var database_list = new List<Database>();
-            database_list.Add(database);
+            var all_deployments_list = new List<Deployment>(_DeploymentService.Get());
 
-            
+            var deployments_z_baza_do_kasacji = new List<Deployment>();
 
-            if (database == null)
-                return NotFound();
-
-            var viewModel = new ShowAllDatabaseViewModel()
+            foreach (var document in all_deployments_list)
             {
-                Databases = database_list
-            };
+                if (document.TargetDbId == DatabaseId)
+                {
+                    deployments_z_baza_do_kasacji.Add(document);
+                }
 
-            _DatabaseService.Remove(database.DatabaseId);
+            }
+
+            if (deployments_z_baza_do_kasacji.Count == 0)
+            {
+                var database_do_kasacji = _DatabaseService.Get(DatabaseId);
+
+                var database_list = new List<Database>();
+
+                database_list.Add(database_do_kasacji);
+
+                if (database_do_kasacji == null)
+                    return NotFound();
+
+                var viewModel = new ShowAllDatabaseViewModel()
+                {
+                    Databases = database_list
+                };
+
+                _DatabaseService.Remove(database_do_kasacji.DatabaseId);
+
+                return View(viewModel);
+            }
+            else
+            {
+                return RedirectToAction("NotDelDatabase", "Database", new { DatabaseId });
+            }  
+        }
+
+        [HttpGet("NotDelDatabase")]
+        public IActionResult NotDelDatabase(string DatabaseId)
+        {
+            var all_deployments_list = new List<Deployment>(_DeploymentService.Get());
+
+            var deployments_z_baza_do_kasacji = new List<Deployment>();
+
+            foreach (var document in all_deployments_list)
+            {
+                if (document.TargetDbId == DatabaseId)
+                {
+                    deployments_z_baza_do_kasacji.Add(document);
+                }
+
+            }
+
+            var document_list_toDisplay = new List<DeploymentToDisplay>();
+
+            foreach (var document in deployments_z_baza_do_kasacji)
+            {
+                var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
+
+                document_list_toDisplay.Add(document_toDisplay);
+            }
+
+            var viewModel = new ShowAllDeploymentViewModel()
+            {
+                DeploymentToDisplay_List = document_list_toDisplay
+            };
 
             return View(viewModel);
         }

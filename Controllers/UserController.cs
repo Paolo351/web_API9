@@ -22,10 +22,16 @@ namespace web_API9.Controllers
 
 
         private readonly Userservice _Userservice;
+        private readonly DeploymentService _DeploymentService;
+        private readonly ProjectService _ProjectService;
+        private readonly DatabaseService _DatabaseService;
 
-        public UserController(Userservice Userservice)
+        public UserController(Userservice Userservice, DatabaseService DatabaseService, DeploymentService DeploymentService, ProjectService ProjectService)
         {
             _Userservice = Userservice;
+            _ProjectService = ProjectService;
+            _DatabaseService = DatabaseService;
+            _DeploymentService = DeploymentService;
         }
 
 
@@ -52,7 +58,9 @@ namespace web_API9.Controllers
             var uzer = new User(FirstName, LastName, PasswordHash, Email, Role);
 
             var User_list = new List<User>();
+
             User_list.Add(_Userservice.Create(uzer));
+
             var viewModel = new ShowAllUserViewModel()
             {
                 Users = User_list
@@ -60,31 +68,106 @@ namespace web_API9.Controllers
             return View(viewModel);
         }
 
-        
+
+        //[HttpGet("DelUser")]
+        //public IActionResult DelUser(string UserId)
+        //{
+        //    var User = _Userservice.Get(UserId);
+        //    var User_list = new List<User>();
+        //    User_list.Add(User);
+
+
+
+        //    if (User == null)
+        //        return NotFound();
+
+        //    var viewModel = new ShowAllUserViewModel()
+        //    {
+        //        Users = User_list
+        //    };
+
+        //    _Userservice.Remove(User.UserId);
+
+
+        //    return View(viewModel);
+        //}
         [HttpGet("DelUser")]
         public IActionResult DelUser(string UserId)
         {
-            var User = _Userservice.Get(UserId);
-            var User_list = new List<User>();
-            User_list.Add(User);
+            var all_deployments_list = new List<Deployment>(_DeploymentService.Get());
 
+            var deployments_z_userem_do_kasacji = new List<Deployment>();
 
-
-            if (User == null)
-                return NotFound();
-
-            var viewModel = new ShowAllUserViewModel()
+            foreach (var document in all_deployments_list)
             {
-                Users = User_list
+                if (document.SchemaCreatedByUserId == UserId)
+                {
+                    deployments_z_userem_do_kasacji.Add(document);
+                }
+
+            }
+
+            if (deployments_z_userem_do_kasacji.Count == 0)
+            {
+                var user_do_kasacji = _Userservice.Get(UserId);
+
+                var user_list = new List<User>();
+
+               user_list.Add(user_do_kasacji);
+
+                if (user_do_kasacji == null)
+                    return NotFound();
+
+                var viewModel = new ShowAllUserViewModel()
+                {
+                    Users = user_list
+                };
+
+                _Userservice.Remove(user_do_kasacji.UserId);
+
+                return View(viewModel);
+            }
+            else
+            {
+                return RedirectToAction("NotDelUser", "User", new { UserId });
+            }
+        }
+
+        [HttpGet("NotDelUser")]
+        public IActionResult NotDelUser(string UserId)
+        {
+            var all_deployments_list = new List<Deployment>(_DeploymentService.Get());
+
+            var deployments_z_userem_do_kasacji = new List<Deployment>();
+
+            foreach (var document in all_deployments_list)
+            {
+                if (document.SchemaCreatedByUserId == UserId)
+                {
+                    deployments_z_userem_do_kasacji.Add(document);
+                }
+
+            }
+
+            var document_list_toDisplay = new List<DeploymentToDisplay>();
+
+            foreach (var document in deployments_z_userem_do_kasacji)
+            {
+                var document_toDisplay = new DeploymentToDisplay(document, _ProjectService, _DatabaseService, _Userservice);
+
+                document_list_toDisplay.Add(document_toDisplay);
+            }
+
+            var viewModel = new ShowAllDeploymentViewModel()
+            {
+                DeploymentToDisplay_List = document_list_toDisplay
             };
-
-            _Userservice.Remove(User.UserId);
-
 
             return View(viewModel);
         }
 
-        
+
+
         [HttpGet("ShowUser")]
         public IActionResult ShowUser()
         {
