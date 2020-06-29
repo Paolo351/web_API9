@@ -11,7 +11,7 @@ using web_API9.Models.Application.Database;
 using web_API9.Models.Application.Deployment;
 using web_API9.Models.Application.Project;
 using web_API9.Models.Application.User;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace web_API9.Controllers
 {
@@ -89,7 +89,24 @@ namespace web_API9.Controllers
         public IActionResult ShowUser()
         {
 
-            return View();
+            
+
+            var lista_userow = new List<SelectListItem>();
+            var user_list = new List<User>(_Userservice.Get());
+            foreach (var document in user_list)
+            {
+                lista_userow.Add(new SelectListItem { Selected = false, Text = document.FullName, Value = document.UserId });
+            }
+            var slist_user = new SelectList(lista_userow, "Value", "Text");
+
+            
+
+            var viewModel = new ShowUserViewModel()
+            {
+                
+                SUserlist = slist_user
+            };
+            return View(viewModel);
         }
     }
 }

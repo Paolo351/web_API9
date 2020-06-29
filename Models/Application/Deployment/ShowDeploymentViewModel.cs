@@ -18,7 +18,7 @@ namespace web_API9.Models.Application.Deployment
 
         public SelectList SUserlist { get; set; }
 
-        public Deployment _Deployment { get; set; }
+        public SelectList SDeploymentlist { get; set; }
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

@@ -9,6 +9,7 @@ using MongoDB.Bson;
 using web_API9.Models;
 using web_API9.Models.Application.Database;
 using web_API9.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace web_API9.Controllers
 {
@@ -83,7 +84,22 @@ namespace web_API9.Controllers
         [HttpGet("ShowDatabase")]
         public IActionResult ShowDatabase()
         {
-            return View();
+            var lista_baz = new List<SelectListItem>();
+            var database_list = new List<Database>(_DatabaseService.Get());
+            foreach (var document in database_list)
+            {
+                lista_baz.Add(new SelectListItem { Selected = false, Text = document.Name, Value = document.DatabaseId });
+            }
+            var slist_database = new SelectList(lista_baz, "Value", "Text");
+
+
+
+            var viewModel = new ShowDatabaseViewModel()
+            {
+
+                SDatabaselist = slist_database
+            };
+            return View(viewModel);
         }
 
         

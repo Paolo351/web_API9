@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using web_API9.Models;
 using web_API9.Infrastructure;
 using web_API9.Models.Application.Database;
 using web_API9.Models.Application.Deployment;
@@ -111,12 +110,21 @@ namespace web_API9.Controllers
                 lista_userow.Add(new SelectListItem { Selected = false, Text = document.FullName, Value = document.UserId });
             }
             var slist_user = new SelectList(lista_userow, "Value", "Text");
-            
+
+            var lista_deploymentowow = new List<SelectListItem>();
+            var deployment_list = new List<Deployment>(_DeploymentService.Get());
+            foreach (var document in deployment_list)
+            {
+                lista_deploymentowow.Add(new SelectListItem { Selected = false, Text = document.Name, Value = document.DeploymentId });
+            }
+            var slist_deployment = new SelectList(lista_deploymentowow, "Value", "Text");
+
             var viewModel = new ShowDeploymentViewModel()
             {
                 SProjectlist = slist_project,
                 SDatabaselist = slist_database,
-                SUserlist = slist_user
+                SUserlist = slist_user,
+                SDeploymentlist = slist_deployment
             };
             return View(viewModel);
         }
