@@ -36,6 +36,7 @@ namespace web_API9.Controllers
             {
                 Databases = database_list
             };
+
             return View(viewModel);
             
         }
@@ -47,11 +48,14 @@ namespace web_API9.Controllers
             var baza = new Database(Name, Engine);
            
             var database_list = new List<Database>();
+
             database_list.Add(_DatabaseService.Create(baza));
+
             var viewModel = new ShowAllDatabaseViewModel()
             {
                 Databases = database_list
             };
+
             return View(viewModel);
         }
 
@@ -138,7 +142,9 @@ namespace web_API9.Controllers
         public IActionResult ShowDatabase()
         {
             var lista_baz = new List<SelectListItem>();
+
             var database_list = new List<Database>(_DatabaseService.Get());
+
             foreach (var document in database_list)
             {
                 lista_baz.Add(new SelectListItem { Selected = false, Text = document.Name, Value = document.DatabaseId });
@@ -152,9 +158,8 @@ namespace web_API9.Controllers
 
                 SDatabaselist = slist_database
             };
+
             return View(viewModel);
         }
-
-        
     }
 }

@@ -19,8 +19,6 @@ namespace web_API9.Controllers
     [ApiController]
     public class UserController : Controller
     {
-
-
         private readonly Userservice _Userservice;
         private readonly DeploymentService _DeploymentService;
         private readonly ProjectService _ProjectService;
@@ -65,32 +63,11 @@ namespace web_API9.Controllers
             {
                 Users = User_list
             };
+
             return View(viewModel);
         }
 
 
-        //[HttpGet("DelUser")]
-        //public IActionResult DelUser(string UserId)
-        //{
-        //    var User = _Userservice.Get(UserId);
-        //    var User_list = new List<User>();
-        //    User_list.Add(User);
-
-
-
-        //    if (User == null)
-        //        return NotFound();
-
-        //    var viewModel = new ShowAllUserViewModel()
-        //    {
-        //        Users = User_list
-        //    };
-
-        //    _Userservice.Remove(User.UserId);
-
-
-        //    return View(viewModel);
-        //}
         [HttpGet("DelUser")]
         public IActionResult DelUser(string UserId)
         {
@@ -171,24 +148,22 @@ namespace web_API9.Controllers
         [HttpGet("ShowUser")]
         public IActionResult ShowUser()
         {
-
-            
-
             var lista_userow = new List<SelectListItem>();
+
             var user_list = new List<User>(_Userservice.Get());
+
             foreach (var document in user_list)
             {
                 lista_userow.Add(new SelectListItem { Selected = false, Text = document.FullName, Value = document.UserId });
             }
             var slist_user = new SelectList(lista_userow, "Value", "Text");
 
-            
-
             var viewModel = new ShowUserViewModel()
             {
                 
                 SUserlist = slist_user
             };
+
             return View(viewModel);
         }
     }
