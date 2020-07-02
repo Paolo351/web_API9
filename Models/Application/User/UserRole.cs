@@ -7,8 +7,10 @@ namespace web_API9.Models.Application.User
 {
     public enum UserRole
     {
-        Admin, 
-        Schema_guard, 
-        Spectator
+        Admin = 1, 
+        Schema_guard = 2, 
+        Spectator = 3
     }
+
+    
 }

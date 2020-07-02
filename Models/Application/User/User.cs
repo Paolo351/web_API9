@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.OpenApi.Extensions;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -35,9 +37,11 @@ namespace web_API9.Models.Application.User
             this.PasswordHash = PasswordHash;
             this.Email = Email;
             this.Role = Role;
-
-
         }
 
+        public User()
+        {
+
+        }
     }
 }
