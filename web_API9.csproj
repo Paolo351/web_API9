@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\LoginController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Menu\GetValue.cshtml" />
     <Content Remove="wwwroot\js\site.min.js" />
   </ItemGroup>
 

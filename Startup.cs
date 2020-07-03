@@ -95,9 +95,10 @@ namespace web_API9
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    /*pattern: "{controller=Home}/{action=Index}/{id?}");*/
+                    pattern: "{controller=Home}/{action=Index}");
 
-            });
+        });
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
