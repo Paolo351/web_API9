@@ -4,14 +4,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using web_API9.Models;
 
+
 namespace web_API9.Controllers
 {
     [Route("Menu")]
+    [ApiController]
     public class MenuController : Controller
     {
         [HttpGet("Menu")]
@@ -20,7 +23,7 @@ namespace web_API9.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin", AuthenticationSchemes = "JwtBearer")]
         [HttpPost("Post")]
         public string Post()
         {
@@ -31,9 +34,10 @@ namespace web_API9.Controllers
             return "Welcome to: " + userName + " -> " + tekst;
         }
 
-        [Authorize]
+        
+        [Authorize(Roles = "Admin", AuthenticationSchemes = "JwtBearer")]
         [HttpGet("GetValue")]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> GetValue()
         {
             return new string[] { "Value1", "Value2", "Value3" };
         }

@@ -15,6 +15,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
+//using Microsoft.EntityFrameworkCore;
 
 namespace web_API9
 {
@@ -32,22 +34,36 @@ namespace web_API9
         {
             services.AddControllersWithViews();
 
-            services.AddCors(options => { options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials().Build()); });
+            //services.AddCors(options => { options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials().Build()); });
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            /*services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();*/
+            //services.AddHttpClient();
+            services.AddAuthentication(options => 
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+                
+            } //JwtBearerDefaults.AuthenticationScheme
+            ).AddJwtBearer("JwtBearer", jwtBearerOptions =>
+            {
+                jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                //options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
+                    //ValidateIssuer = true,
+                    //ValidateAudience = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.FromMinutes(5),
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Issuer"],
+                    //ValidIssuer = Configuration["Jwt:Issuer"],
+                    //ValidAudience = Configuration["Jwt:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
-
+            //services.AddAuthorization();
             services.Configure<MongoBDOSettings>(
                 Configuration.GetSection(nameof(MongoBDOSettings)));
             services.AddSingleton<IMongoBDO>(sp =>
@@ -58,7 +74,7 @@ namespace web_API9
             services.AddSingleton<ProjectService>();
             services.AddSingleton<DatabaseService>();
 
-            services.AddMvc();
+            //services.AddMvc();
 
             services.AddSwaggerGen(c =>
             {
@@ -90,6 +106,13 @@ namespace web_API9
 
             app.UseAuthorization();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "web_API9");
+            });
+
             app.UseEndpoints(endpoints =>
             {
 
@@ -98,12 +121,6 @@ namespace web_API9
                     /*pattern: "{controller=Home}/{action=Index}/{id?}");*/
                     pattern: "{controller=Home}/{action=Index}");
 
-        });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "web_API9");
             });
         }
     }

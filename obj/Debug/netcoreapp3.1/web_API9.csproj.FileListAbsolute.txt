@@ -148,4 +148,3 @@ C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\web_API9.MvcApplicationP
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Menu.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Privacy.cshtml.g.cs
 C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Pawel\Desktop\web_API9\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
